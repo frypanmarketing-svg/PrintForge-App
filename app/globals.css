@@ -1,8 +1,89 @@
-@import url("https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100,500,900;1,100..900&family=Bungee&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&family=Bungee&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
 
 * {
     margin: 0;
     box-sizing: border-box;
+}
+
+:root {
+    /* Viewport bounds */
+    --vw-min: 360;
+    --vw-max: 1440;
+
+    /* Fluid calculator */
+    --fluid-bp: calc(
+        (100vw - (var(--vw-min) * 1px)) / (var(--vw-max) - var(--vw-min))
+    );
+
+    /* Font sizes */
+    --fs-xs: clamp(12px, calc(12px + 4 * var(--fluid-bp)), 16px);
+    --fs-sm: clamp(14px, calc(14px + 4 * var(--fluid-bp)), 18px);
+    --fs-md: clamp(16px, calc(16px + 6 * var(--fluid-bp)), 22px);
+    --fs-lg: clamp(20px, calc(20px + 10 * var(--fluid-bp)), 30px);
+    --fs-xl: clamp(28px, calc(28px + 18 * var(--fluid-bp)), 46px);
+    --fs-2xl: clamp(36px, calc(36px + 32 * var(--fluid-bp)), 68px);
+
+    /* Spacing */
+    --space-xs: clamp(4px, 0.5vw, 8px);
+    --space-sm: clamp(8px, 1vw, 16px);
+    --space-md: clamp(16px, 2vw, 32px);
+    --space-lg: clamp(24px, 4vw, 64px);
+    --space-xl: clamp(40px, 6vw, 96px);
+}
+
+.container {
+    padding-inline: clamp(16px, 5vw, 96px);
+    max-width: 1440px;
+    margin-inline: auto;
+}
+
+/* ======================================
+   Fluid Typography — Auto by Default
+   ====================================== */
+
+html {
+    font-size: 100%;
+}
+
+body {
+    font-size: var(--fs-md);
+    line-height: clamp(1.5, 1.6vw, 1.8);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Headings */
+
+h1 {
+    font-size: var(--fs-2xl);
+    line-height: 1.05;
+    margin-bottom: var(--space-md);
+}
+
+h2 {
+    font-size: var(--fs-xl);
+    line-height: 1.1;
+    margin-bottom: var(--space-sm);
+}
+
+h3 {
+    font-size: var(--fs-lg);
+    line-height: 1.2;
+    margin-bottom: var(--space-xs);
+}
+
+/* Paragraphs */
+
+p {
+    font-size: var(--fs-md);
+    line-height: clamp(1.6, 1.8vw, 1.9);
+    margin-bottom: var(--space-sm);
+}
+
+/* Small text */
+
+small {
+    font-size: var(--fs-sm);
+    line-height: 1.4;
 }
 
 body {
@@ -42,7 +123,7 @@ nav ul {
 }
 
 .hero-section img {
-    width:100%;
+    width: 100%;
     max-width: 500px;
     height: auto;
 }
@@ -64,6 +145,7 @@ nav ul {
 .hero-heading {
     font-family: "Bungee", sans-serif;
     font-weight: 700;
+    font-size: var(--fs-2xl);
 }
 
 .hero-cta {
@@ -77,23 +159,76 @@ button {
     cursor: pointer;
 }
 
+.about-page-hero {
+    flex-direction: row-reverse;
+    column-gap: 4rem;
+}
+
+.icon-line {
+    display: flex;
+    gap: 4px;
+}
+
+.icon-line img {
+    width: 20px;
+    height: auto;
+}
+
+.usp-container {
+    display: grid;
+    grid-template-columns: 260px 260px 260px;
+    justify-content: center;
+    gap: var(--space-xl);
+    padding: var(--space-md);
+}
+
+.usp-text {
+    font-size: var(--fs-xs);
+    font-family: "Ubuntu", sans-serif !important;
+}
+
+.usp-box {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+    padding-right: var(--space-md);
+    justify-content: center;
+}
+
+.usp-box::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 1px; /* thinner = smoother */
+    height: 60%;
+    background-color: rgba(0, 0, 0, 0.25); /* soft look */
+}
+
+.usp-box span {
+    font-size: var(--fs-sm);
+}
+
 @media (max-width: 767px) {
     .hero-section {
         flex-direction: column;
     }
-    
+
     header li {
         font-size: 12px;
     }
-    
+
     header {
         padding: 12px;
     }
-    
+
     .hero-content-box span {
         font-size: 12px;
     }
     .hero-cta {
-        margin-top:4px;
+        margin-top: 4px;
     }
 }
