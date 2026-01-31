@@ -1,3 +1,6 @@
+import Image from "next/image";
+import heroImage from "@/public/hero-image.png";
+
 export default function HeroSection() {
   return (
     <div className="hero-section">
@@ -14,7 +17,7 @@ export default function HeroSection() {
       </div>
 
       <div>
-        <img src="/hero-image.png" alt="Hero Image"></img>
+        <Image src={heroImage} alt="The hero image of the homepage" />
       </div>
     </div>
   );

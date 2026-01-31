@@ -1,9 +1,9 @@
-import Header from "../components/Header";
+import Image from "next/image";
+import aboutHeroImage from "@/public/about-hero.png";
 
 export default function AboutPage() {
   return (
     <>
-      <Header />
       <section className="hero-section about-page-hero">
         <div className="hero-content-box">
           <span>About printforge</span>
@@ -21,7 +21,7 @@ export default function AboutPage() {
         </div>
 
         <div>
-          <img src="/about-hero.png" alt="Hero Image"></img>
+          <Image src={aboutHeroImage} alt="About Hero Image" />
         </div>
       </section>
 
